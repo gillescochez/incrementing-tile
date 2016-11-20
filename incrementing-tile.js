@@ -7,6 +7,4 @@
         }
     }
 
-    new IncrementingTile();
-
 })();
