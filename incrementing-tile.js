@@ -1,10 +1,6 @@
-(function() {
+class IncrementingTile {
 
-    class IncrementingTile {
-
-        constructor(settings) {
-            this.settings = settings;
-        }
+    constructor(settings) {
+        this.settings = settings;
     }
-
-})();
+}
