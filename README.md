@@ -1,6 +1,7 @@
 # IncrementingTile
 
 A simple class that generate a basic tile UI with a counter that can increase over time.
+
 Build in ES6 and transpiled to ES5 via babel.
 
 ## Usage
