@@ -43,10 +43,11 @@ class IncrementingTile {
 
     update() {
 
-        this.elements.amount.__value = (this.elements.amount.__value || 0) + this.increment;
+        this.elements.amount.__value = parseInt((this.elements.amount.__value || 0) + this.increment);
         this.elements.amount.innerText = IncrementingTile.format(this.elements.amount.__value, this.settings.formatter);
 
-        if (this.settings.amount <= parseInt(this.elements.amount.innerText)) {
+
+        if (this.settings.amount <= this.elements.amount.__value) {
             this.tick();
         }
     }
@@ -60,7 +61,7 @@ class IncrementingTile {
             clearInterval(this.interval);
         }
 
-        if (this.settings.amount > parseInt(this.elements.amount.innerText)) {
+        if (this.settings.amount > (this.elements.amount.__value || 0)) {
             this.interval = setInterval(() => this.update(), this.settings.interval / this.settings.speed);
         } else {
             if (this.settings.continuous) {
