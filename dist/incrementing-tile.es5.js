@@ -40,12 +40,13 @@ var IncrementingTile = function () {
             var _settings = this.settings,
                 cssClass = _settings.cssClass,
                 top = _settings.top,
-                center = _settings.center,
+                centerPrefix = _settings.centerPrefix,
+                centerSuffix = _settings.centerSuffix,
                 bottom = _settings.bottom,
                 amount = _settings.amount,
                 continuous = _settings.continuous;
 
-            var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">" + center + "\n                <span class=\"inc-tile-amount\">\n                    " + (continuous ? 0 : IncrementingTile.format(amount, this.settings.formatter)) + "\n                </span>\n            </div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
+            var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">\n                <span>" + centerPrefix + "</span>\n                <span class=\"inc-tile-amount\">\n                    " + (continuous ? 0 : IncrementingTile.format(amount, this.settings.formatter)) + "\n                </span>\n                <span>" + centerSuffix + "</span>\n            </div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
 
             var wrap = document.createElement("div");
             wrap.innerHTML = template;
@@ -157,6 +158,7 @@ IncrementingTile.defaults = {
     speed: 5, // Amount used to reach the full amount faster
     cssClass: "", // CSS class to add to the root tile element for custom styling
     top: "", // Text/HTML to inject into the top element
-    center: "", // Text/HTML to inject into the center element
+    centerPrefix: "", // Text/HTML to inject into the center element in front of the number
+    centerSuffix: "", // Text/HTML to inject into the center element after the number
     bottom: "" // Text/HTML to inject into the bottom element
 };

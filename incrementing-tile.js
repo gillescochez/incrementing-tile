@@ -27,13 +27,15 @@ class IncrementingTile {
      */
     generate() {
 
-        let {cssClass, top, center, bottom, amount, continuous} = this.settings;
+        let {cssClass, top, centerPrefix, centerSuffix, bottom, amount, continuous} = this.settings;
         let template = `<div class="inc-tile ${cssClass}">
             <div class="inc-tile-top">${top}</div>
-            <div class="inc-tile-center">${center}
+            <div class="inc-tile-center">
+                <span>${centerPrefix}</span>
                 <span class="inc-tile-amount">
                     ${continuous ? 0 : IncrementingTile.format(amount, this.settings.formatter)}
                 </span>
+                <span>${centerSuffix}</span>
             </div>
             <div class="inc-tile-bottom">${bottom}</div>
         </div>`;
@@ -134,6 +136,7 @@ IncrementingTile.defaults = {
     speed: 5, // Amount used to reach the full amount faster
     cssClass: "", // CSS class to add to the root tile element for custom styling
     top: "", // Text/HTML to inject into the top element
-    center: "", // Text/HTML to inject into the center element
+    centerPrefix: "", // Text/HTML to inject into the center element in front of the number
+    centerSuffix: "", // Text/HTML to inject into the center element after the number
     bottom: "" // Text/HTML to inject into the bottom element
 };
