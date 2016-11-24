@@ -24,7 +24,7 @@ var IncrementingTile = function () {
 
         this.generate();
 
-        if (!this.settings.static) {
+        if (this.settings.continuous) {
             this.tick();
         }
     }
@@ -41,9 +41,11 @@ var IncrementingTile = function () {
                 cssClass = _settings.cssClass,
                 top = _settings.top,
                 center = _settings.center,
-                bottom = _settings.bottom;
+                bottom = _settings.bottom,
+                amount = _settings.amount,
+                continuous = _settings.continuous;
 
-            var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">" + center + "<span class=\"inc-tile-amount\">0</span></div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
+            var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">" + center + "\n                <span class=\"inc-tile-amount\">\n                    " + (continuous ? 0 : IncrementingTile.format(amount, this.settings.formatter)) + "\n                </span>\n            </div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
 
             var wrap = document.createElement("div");
             wrap.innerHTML = template;
@@ -108,6 +110,8 @@ var IncrementingTile = function () {
 
 IncrementingTile.format = function (amount, formatter) {
 
+    amount = Math.round(amount < 1 ? 1 : amount);
+
     if (IncrementingTile.hasOwnProperty(formatter + "Formatter")) {
         return IncrementingTile[formatter + "Formatter"](amount);
     } else {
@@ -149,7 +153,6 @@ IncrementingTile.defaults = {
     amount: 10000, // amount to reach
     amountPerSecond: 150, // amount to increase the value per second
     continuous: true, // If true the tile will keep counting using the amountPerSecond value
-    static: false, // No incrementation
     interval: 500, // Interval use to refresh the number
     speed: 5, // Amount used to reach the full amount faster
     cssClass: "", // CSS class to add to the root tile element for custom styling

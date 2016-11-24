@@ -27,7 +27,6 @@ new IncrementingTile({
 | amount | Integer |  10000 |
 | amountPerSecond | Integer | 150 |
 | continuous | Boolean | true |
-| static | Boolean | false |
 | interval | Integer | 500 |
 | speed | Integer | 5 |
 | cssClass | String | "" |
