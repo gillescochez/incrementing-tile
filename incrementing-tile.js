@@ -46,9 +46,8 @@ class IncrementingTile {
 
     update() {
 
-        this.elements.amount.__value = parseInt((this.elements.amount.__value || 0) + this.increment);
+        this.elements.amount.__value = (this.elements.amount.__value || 0) + this.increment;
         this.elements.amount.innerText = IncrementingTile.format(this.elements.amount.__value, this.settings.formatter);
-
 
         if (this.settings.amount <= this.elements.amount.__value) {
             this.tick();
@@ -83,8 +82,6 @@ class IncrementingTile {
  * @returns {*}
  */
 IncrementingTile.format = (amount, formatter) => {
-
-    amount = Math.round(amount);
 
     if (IncrementingTile.hasOwnProperty(formatter + "Formatter")) {
         return IncrementingTile[formatter + "Formatter"](amount);

@@ -18,7 +18,7 @@ var IncrementingTile = function () {
 
         this.settings = Object.assign({}, IncrementingTile.defaults, settings);
         this.increment = this.settings.amountPerSecond / (1000 / this.settings.interval);
-        this.target = target || document.body;
+        this.target = target || null;
         this.interval = null;
         this.elements = {};
 
@@ -49,13 +49,16 @@ var IncrementingTile = function () {
             wrap.innerHTML = template;
 
             this.elements = IncrementingTile.queryElements(wrap.firstChild);
-            this.target.appendChild(this.elements.tile);
+
+            if (this.target) {
+                this.target.appendChild(this.elements.tile);
+            }
         }
     }, {
         key: "update",
         value: function update() {
 
-            this.elements.amount.__value = parseInt((this.elements.amount.__value || 0) + this.increment);
+            this.elements.amount.__value = (this.elements.amount.__value || 0) + this.increment;
             this.elements.amount.innerText = IncrementingTile.format(this.elements.amount.__value, this.settings.formatter);
 
             if (this.settings.amount <= this.elements.amount.__value) {
@@ -104,8 +107,6 @@ var IncrementingTile = function () {
 
 
 IncrementingTile.format = function (amount, formatter) {
-
-    amount = Math.round(amount);
 
     if (IncrementingTile.hasOwnProperty(formatter + "Formatter")) {
         return IncrementingTile[formatter + "Formatter"](amount);
