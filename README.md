@@ -6,6 +6,10 @@ Build in ES6 and transpiled to ES5 via babel.
 
 ## Usage
 
+The second argument is optional. If not passed the tile will not be rendered.
+
+Returns the tile Element generated.
+
 ```javascript
 new IncrementingTile({
     top: "Money wasted",
@@ -13,6 +17,7 @@ new IncrementingTile({
     bottom: "What a shame"
 }, document.getElementById("tiles"));
 ```
+
 
 ## Options
 

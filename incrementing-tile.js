@@ -11,7 +11,7 @@ class IncrementingTile {
 
         this.settings = Object.assign({}, IncrementingTile.defaults, settings);
         this.increment = this.settings.amountPerSecond / (1000 / this.settings.interval);
-        this.target = target || document.body;
+        this.target = target || null;
         this.interval = null;
         this.elements = {};
 
@@ -38,7 +38,10 @@ class IncrementingTile {
         wrap.innerHTML = template;
 
         this.elements = IncrementingTile.queryElements(wrap.firstChild);
-        this.target.appendChild(this.elements.tile);
+
+        if (this.target) {
+            this.target.appendChild(this.elements.tile);
+        }
     }
 
     update() {
