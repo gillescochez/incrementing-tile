@@ -115,24 +115,6 @@ IncrementingTile.thousandsFormatter = (amount) => {
 };
 
 /**
- * Format number that are in millions and billions
- * @param amount {Number} The number to format
- * @returns {string}
- */
-IncrementingTile.mbFormatter = (amount) => {
-
-    return Math.abs(amount) >= 1.0e+9
-
-        ? (Math.abs(amount) / 1.0e+9).toFixed(3) + "B"
-
-        : Math.abs(amount) >= 1.0e+6
-
-        ? (Math.abs(amount) / 1.0e+6).toFixed(3) + "M"
-
-        : Math.abs(amount);
-};
-
-/**
  * Short formating for all numbers over 1,000
  * @param amount {Number} The number to format
  * @returns {string}

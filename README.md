@@ -40,7 +40,7 @@ new IncrementingTile({
 
 | Property        | Type           | Default  | Description |
 | -------------- |:--------------:| --------:| :------------|
-| formatter | String / Boolean | "thousands" | Formatter apply to the rendered amount value. Available thousands, mb, short |
+| formatter | String / Boolean | "thousands" | Formatter apply to the rendered amount value. Available thousands or short (K,M,B) |
 | amount | Integer |  10000 | Amount to reach |
 | amountAtStart | Integer |  0 | Amount to start incrementing from |
 | amountPerSecond | Integer | 150 | Number to increase the amount per second |
