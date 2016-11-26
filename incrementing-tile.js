@@ -115,6 +115,46 @@ IncrementingTile.thousandsFormatter = (amount) => {
 };
 
 /**
+ * Format number that are in millions and billions
+ * @param amount {Number} The number to format
+ * @returns {string}
+ */
+IncrementingTile.mbFormatter = (amount) => {
+
+    return Math.abs(amount) >= 1.0e+9
+
+        ? Math.abs(amount) / 1.0e+9 + "B"
+
+        : Math.abs(amount) >= 1.0e+6
+
+        ? Math.abs(amount) / 1.0e+6 + "M"
+
+        : Math.abs(amount);
+};
+
+/**
+ * Short formating for all numbers over 1,000
+ * @param amount {Number} The number to format
+ * @returns {string}
+ */
+IncrementingTile.shortFormatter = (amount) => {
+
+    return Math.abs(amount) >= 1.0e+9
+
+        ? Math.abs(amount) / 1.0e+9 + "B"
+
+        : Math.abs(amount) >= 1.0e+6
+
+        ? Math.abs(amount) / 1.0e+6 + "M"
+
+        : Math.abs(amount) >= 1.0e+3
+
+        ? Math.abs(amount) / 1.0e+3 + "K"
+
+        : Math.abs(amount);
+};
+
+/**
  * Query the elements inside a tile and return an object containing the tile and its children as properties.
  * @param tile {Element} The tile (parent) element
  * @returns {{tile: Element, amount: Element, top: Element, center: Element, bottom: Element}}
@@ -135,7 +175,7 @@ IncrementingTile.queryElements = (tile) => {
  * @type {{formatting: string, amount: number, amountPerSecond: number, continuous: boolean, static: boolean, interval: number, cssClass: string, top: string, center: string, bottom: string}}
  */
 IncrementingTile.defaults = {
-    formatter: "thousands", // thousands / millions / false
+    formatter: "thousands", // thousands / mb / short / false
     amount: 10000, // amount to reach
     amountAtStart: 0, // The amount to increment from
     amountPerSecond: 150, // amount to increase the value per second

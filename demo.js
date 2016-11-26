@@ -6,7 +6,8 @@
         amountAtStart: 5000,
         top: "Money wasted",
         centerPrefix: "£",
-        bottom: "What a shame"
+        bottom: "What a shame",
+        formatter: "short"
     }, target);
 
 })();
