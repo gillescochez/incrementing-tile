@@ -59,12 +59,22 @@ var IncrementingTile = function () {
                 this.target.appendChild(this.elements.tile);
             }
         }
+
+        /**
+         * Update the rendered value
+         */
+
     }, {
         key: "update",
         value: function update() {
 
             this.elements.amount.__value = (this.elements.amount.__value || 0) + this.increment;
-            this.elements.amount.innerText = IncrementingTile.format(this.elements.amount.__value, this.settings.formatter);
+
+            var formattedValue = IncrementingTile.format(this.elements.amount.__value, this.settings.formatter);
+
+            if (formattedValue !== this.elements.amount.innerText) {
+                this.elements.amount.innerText = formattedValue;
+            }
 
             if (this.settings.amount <= this.elements.amount.__value) {
                 this.tick();
@@ -86,7 +96,6 @@ var IncrementingTile = function () {
 
             if (this.settings.amountAtStart > 0 && !this.elements.amount.__value) {
                 this.elements.amount.__value = this.settings.amountAtStart;
-                console.log(this.elements.amount.__value);
             }
 
             if (this.settings.amount > (this.elements.amount.__value || 0)) {
@@ -137,16 +146,6 @@ IncrementingTile.thousandsFormatter = function (amount) {
 };
 
 /**
- * Format number that are in millions and billions
- * @param amount {Number} The number to format
- * @returns {string}
- */
-IncrementingTile.mbFormatter = function (amount) {
-
-    return Math.abs(amount) >= 1.0e+9 ? (Math.abs(amount) / 1.0e+9).toFixed(3) + "B" : Math.abs(amount) >= 1.0e+6 ? (Math.abs(amount) / 1.0e+6).toFixed(3) + "M" : Math.abs(amount);
-};
-
-/**
  * Short formating for all numbers over 1,000
  * @param amount {Number} The number to format
  * @returns {string}
@@ -177,7 +176,7 @@ IncrementingTile.queryElements = function (tile) {
  * @type {{formatting: string, amount: number, amountPerSecond: number, continuous: boolean, static: boolean, interval: number, cssClass: string, top: string, center: string, bottom: string}}
  */
 IncrementingTile.defaults = {
-    formatter: "thousands", // thousands / mb / short / false
+    formatter: "thousands", // thousands / short / false
     amount: 10000, // amount to reach
     amountAtStart: 0, // The amount to increment from
     amountPerSecond: 150, // amount to increase the value per second
