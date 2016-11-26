@@ -18,6 +18,23 @@ new IncrementingTile({
 }, document.getElementById("tiles"));
 ```
 
+## Markup generated
+
+```html
+
+<div class="inc-tile ${cssClass}">
+    <div class="inc-tile-top">${top}</div>
+    <div class="inc-tile-center">
+        <span>${centerPrefix}</span>
+        <span class="inc-tile-amount">
+            ${increment ? 0 : IncrementingTile.format(amount, this.settings.formatter)}
+        </span>
+        <span>${centerSuffix}</span>
+    </div>
+    <div class="inc-tile-bottom">${bottom}</div>
+</div>
+
+```
 
 ## Options
 
