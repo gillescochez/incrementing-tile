@@ -42,6 +42,7 @@ new IncrementingTile({
 | -------------- |:--------------:| --------:| :------------|
 | formatter | String / Boolean | "thousands" | Formatter apply to the rendered amount value |
 | amount | Integer |  10000 | Amount to reach |
+| amountAtStart | Integer |  0 | Amount to start incrementing from |
 | amountPerSecond | Integer | 150 | Number to increase the amount per second |
 | continuous | Boolean | true | If true will keep counting after amount reach using amountPerSecond value |
 | increment | Boolean | true | If true will increment from 0 to the amount. If false the amount will be rendered |

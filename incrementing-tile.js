@@ -71,6 +71,11 @@ class IncrementingTile {
             clearInterval(this.interval);
         }
 
+        if (this.settings.amountAtStart > 0 && !this.elements.amount.__value) {
+            this.elements.amount.__value = this.settings.amountAtStart;
+            console.log(this.elements.amount.__value);
+        }
+
         if (this.settings.amount > (this.elements.amount.__value || 0)) {
             this.interval = setInterval(() => this.update(), this.settings.interval / this.settings.speed);
         } else {
@@ -132,6 +137,7 @@ IncrementingTile.queryElements = (tile) => {
 IncrementingTile.defaults = {
     formatter: "thousands", // thousands / millions / false
     amount: 10000, // amount to reach
+    amountAtStart: 0, // The amount to increment from
     amountPerSecond: 150, // amount to increase the value per second
     continuous: true, // If true the tile will keep counting using the amountPerSecond value
     increment: true, // If false the tile will not count and simply render the amount
