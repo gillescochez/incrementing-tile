@@ -143,7 +143,7 @@ IncrementingTile.thousandsFormatter = function (amount) {
  */
 IncrementingTile.mbFormatter = function (amount) {
 
-    return Math.abs(amount) >= 1.0e+9 ? Math.abs(amount) / 1.0e+9 + "B" : Math.abs(amount) >= 1.0e+6 ? Math.abs(amount) / 1.0e+6 + "M" : Math.abs(amount);
+    return Math.abs(amount) >= 1.0e+9 ? (Math.abs(amount) / 1.0e+9).toFixed(3) + "B" : Math.abs(amount) >= 1.0e+6 ? (Math.abs(amount) / 1.0e+6).toFixed(3) + "M" : Math.abs(amount);
 };
 
 /**
@@ -153,7 +153,7 @@ IncrementingTile.mbFormatter = function (amount) {
  */
 IncrementingTile.shortFormatter = function (amount) {
 
-    return Math.abs(amount) >= 1.0e+9 ? Math.abs(amount) / 1.0e+9 + "B" : Math.abs(amount) >= 1.0e+6 ? Math.abs(amount) / 1.0e+6 + "M" : Math.abs(amount) >= 1.0e+3 ? Math.abs(amount) / 1.0e+3 + "K" : Math.abs(amount);
+    return Math.abs(amount) >= 1.0e+9 ? (Math.abs(amount) / 1.0e+9).toFixed(3) + "B" : Math.abs(amount) >= 1.0e+6 ? (Math.abs(amount) / 1.0e+6).toFixed(3) + "M" : Math.abs(amount) >= 1.0e+3 ? (Math.abs(amount) / 1.0e+3).toFixed(3) + "K" : Math.abs(amount);
 };
 
 /**
