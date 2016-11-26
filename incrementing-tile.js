@@ -17,7 +17,7 @@ class IncrementingTile {
 
         this.generate();
 
-        if (this.settings.continuous) {
+        if (this.settings.increment) {
             this.tick();
         }
     }
@@ -27,13 +27,13 @@ class IncrementingTile {
      */
     generate() {
 
-        let {cssClass, top, centerPrefix, centerSuffix, bottom, amount, continuous} = this.settings;
+        let {cssClass, top, centerPrefix, centerSuffix, bottom, amount, increment} = this.settings;
         let template = `<div class="inc-tile ${cssClass}">
             <div class="inc-tile-top">${top}</div>
             <div class="inc-tile-center">
                 <span>${centerPrefix}</span>
                 <span class="inc-tile-amount">
-                    ${continuous ? 0 : IncrementingTile.format(amount, this.settings.formatter)}
+                    ${increment ? 0 : IncrementingTile.format(amount, this.settings.formatter)}
                 </span>
                 <span>${centerSuffix}</span>
             </div>
@@ -132,6 +132,7 @@ IncrementingTile.defaults = {
     amount: 10000, // amount to reach
     amountPerSecond: 150, // amount to increase the value per second
     continuous: true, // If true the tile will keep counting using the amountPerSecond value
+    increment: true, // If false the tile will not count and simply render the amount
     interval: 500, // Interval use to refresh the number
     speed: 5, // Amount used to reach the full amount faster
     cssClass: "", // CSS class to add to the root tile element for custom styling

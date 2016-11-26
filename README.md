@@ -21,15 +21,16 @@ new IncrementingTile({
 
 ## Options
 
-| Property        | Type           | Default  |
-| -------------- |:--------------:| --------:|
-| formatter | String / Boolean | "thousands" |
-| amount | Integer |  10000 |
-| amountPerSecond | Integer | 150 |
-| continuous | Boolean | true |
-| interval | Integer | 500 |
-| speed | Integer | 5 |
-| cssClass | String | "" |
-| top | String | "" |
-| center | String | "" |
-| bottom | String | "" |
+| Property        | Type           | Default  | Description |
+| -------------- |:--------------:| --------:| :------------|
+| formatter | String / Boolean | "thousands" | Formatter apply to the rendered amount value |
+| amount | Integer |  10000 | Amount to reach |
+| amountPerSecond | Integer | 150 | Number to increase the amount per second |
+| continuous | Boolean | true | If true will keep counting after amount reach using amountPerSecond value |
+| increment | Boolean | true | If true will increment from 0 to the amount. If false the amount will be rendered |
+| interval | Integer | 500 | Interval in ms of the tick |
+| speed | Integer | 5 | Increase to speed up the reach time of the amount. |
+| cssClass | String | "" | CSS class name to inject into the tile root element |
+| top | String | "" | Content to inject into the top element of the tile |
+| center | String | "" | Content to inject into the center element of the tile |
+| bottom | String | "" | Content to inject into the bottom element of the tile | 

@@ -24,7 +24,7 @@ var IncrementingTile = function () {
 
         this.generate();
 
-        if (this.settings.continuous) {
+        if (this.settings.increment) {
             this.tick();
         }
     }
@@ -44,9 +44,9 @@ var IncrementingTile = function () {
                 centerSuffix = _settings.centerSuffix,
                 bottom = _settings.bottom,
                 amount = _settings.amount,
-                continuous = _settings.continuous;
+                increment = _settings.increment;
 
-            var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">\n                <span>" + centerPrefix + "</span>\n                <span class=\"inc-tile-amount\">\n                    " + (continuous ? 0 : IncrementingTile.format(amount, this.settings.formatter)) + "\n                </span>\n                <span>" + centerSuffix + "</span>\n            </div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
+            var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">\n                <span>" + centerPrefix + "</span>\n                <span class=\"inc-tile-amount\">\n                    " + (increment ? 0 : IncrementingTile.format(amount, this.settings.formatter)) + "\n                </span>\n                <span>" + centerSuffix + "</span>\n            </div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
 
             var wrap = document.createElement("div");
             wrap.innerHTML = template;
@@ -154,6 +154,7 @@ IncrementingTile.defaults = {
     amount: 10000, // amount to reach
     amountPerSecond: 150, // amount to increase the value per second
     continuous: true, // If true the tile will keep counting using the amountPerSecond value
+    increment: true, // If false the tile will not count and simply render the amount
     interval: 500, // Interval use to refresh the number
     speed: 5, // Amount used to reach the full amount faster
     cssClass: "", // CSS class to add to the root tile element for custom styling
