@@ -40,6 +40,8 @@ class IncrementingTile {
             <div class="inc-tile-bottom">${bottom}</div>
         </div>`;
 
+        template = template.replace(/\r?\n|\r|\t/gm, "").replace(/\>\s+\</g,'><');
+
         let wrap = document.createElement("div");
         wrap.innerHTML = template;
 

@@ -48,6 +48,8 @@ var IncrementingTile = function () {
 
             var template = "<div class=\"inc-tile " + cssClass + "\">\n            <div class=\"inc-tile-top\">" + top + "</div>\n            <div class=\"inc-tile-center\">\n                <span>" + centerPrefix + "</span>\n                <span class=\"inc-tile-amount\">\n                    " + (increment ? 0 : IncrementingTile.format(amount, this.settings.formatter)) + "\n                </span>\n                <span>" + centerSuffix + "</span>\n            </div>\n            <div class=\"inc-tile-bottom\">" + bottom + "</div>\n        </div>";
 
+            template = template.replace(/\r?\n|\r|\t/gm, "").replace(/\>\s+\</g, '><');
+
             var wrap = document.createElement("div");
             wrap.innerHTML = template;
 

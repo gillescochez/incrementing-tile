@@ -4,7 +4,7 @@
 
     new IncrementingTile({
         top: "Money wasted",
-        center: "£ ",
+        centerPrefix: "£",
         bottom: "What a shame"
     }, target);
 
