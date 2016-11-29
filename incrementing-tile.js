@@ -129,13 +129,19 @@ IncrementingTile.thousandsFormatter = (amount) => {
 IncrementingTile.shortFormatter = (amount) => {
 
     return Math.abs(amount) >= 1.0e+9
-        ? (Math.abs(amount) / 1.0e+9).toFixed(3) + "B"
+        ? (Math.abs(amount) / 1.0e+9).toFixed(IncrementingTile.shortFormatter.decimal) + "B"
         : Math.abs(amount) >= 1.0e+6
-        ? (Math.abs(amount) / 1.0e+6).toFixed(3) + "M"
+        ? (Math.abs(amount) / 1.0e+6).toFixed(IncrementingTile.shortFormatter.decimal) + "M"
         : Math.abs(amount) >= 1.0e+3
-        ? (Math.abs(amount) / 1.0e+3).toFixed(3) + "K"
+        ? (Math.abs(amount) / 1.0e+3).toFixed(IncrementingTile.shortFormatter.decimal) + "K"
         : Math.abs(amount);
 };
+
+/**
+ * Short formatter decimal option
+ * @type {number}
+ */
+IncrementingTile.shortFormatter.decimal = 0;
 
 /**
  * Query the elements inside a tile and return an object containing the tile and its children as properties.
