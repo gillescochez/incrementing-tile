@@ -50,5 +50,6 @@ new IncrementingTile({
 | speed | Integer | 5 | Increase to speed up the reach time of the amount. |
 | cssClass | String | "" | CSS class name to inject into the tile root element |
 | top | String | "" | Content to inject into the top element of the tile |
-| center | String | "" | Content to inject into the center element of the tile |
-| bottom | String | "" | Content to inject into the bottom element of the tile | 
+| centerPrefix | String | "" | Text/HTML to inject into the center element in front of the number |
+| centerSuffix | String | "" | Text/HTML to inject into the center element after the number |
+| bottom | String | "" | Content to inject into the bottom element of the tile |
